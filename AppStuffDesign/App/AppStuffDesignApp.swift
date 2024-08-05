@@ -11,7 +11,7 @@ import SwiftUI
 struct AppStuffDesignApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DropdownDemoView()
         }
     }
 }
