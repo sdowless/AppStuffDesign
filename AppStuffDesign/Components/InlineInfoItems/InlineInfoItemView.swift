@@ -12,6 +12,8 @@ struct InlineInfoItemView: View {
     private let title: String?
     private let subtitle: String
     
+    private var iconAlignment: VerticalAlignment = .top
+    
     init(title: String? = nil, subtitle: String, imageName: String) {
         self.title = title
         self.subtitle = subtitle
@@ -19,7 +21,7 @@ struct InlineInfoItemView: View {
     }
     
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
+        HStack(alignment: iconAlignment, spacing: 16) {
             Image(systemName: imageName)
                 .frame(width: 24)
                 .font(.title3)
@@ -38,6 +40,15 @@ struct InlineInfoItemView: View {
             
             Spacer()
         }
+    }
+}
+
+extension InlineInfoItemView {
+    func iconAlignment(_ alignment: VerticalAlignment) -> Self {
+        var copy = self
+        guard alignment != .bottom else { return copy }
+        copy.iconAlignment = alignment
+        return copy
     }
 }
 

@@ -53,6 +53,8 @@ struct InlineAlertDemoView: View {
                 }
             }
         }
+        .navigationTitle("Inline Alert")
+        .navigationBarTitleDisplayMode(.inline)
         .task(id: isPresented) {
             try? await Task.sleep(nanoseconds: 2_000_000_000)
             isPresented = true

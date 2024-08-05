@@ -27,6 +27,8 @@ struct DotIndicatorDemoView: View {
                 DemoOptionSection("Status", options: DemoComponentStatus.allCases, selectedItem: $dotStatus)
             }
         }
+        .navigationTitle("Dot Indicator")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
