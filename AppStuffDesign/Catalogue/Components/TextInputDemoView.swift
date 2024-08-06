@@ -145,6 +145,7 @@ private extension TextInputDemoView {
             .loadable($isLoading)
     }
 }
+
 #Preview {
     TextInputDemoView()
 }
