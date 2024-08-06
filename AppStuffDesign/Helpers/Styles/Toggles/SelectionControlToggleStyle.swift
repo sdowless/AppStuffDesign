@@ -19,12 +19,14 @@ struct SelectionControlToggleStyle: ToggleStyle {
         Label {
             configuration.label
         } icon: {
-            RadioButton.Icon(isOn: configuration.isOn)
+            Button {
+                configuration.isOn.toggle()
+            } label: {
+                RadioButton.Icon(isOn: configuration.isOn)
+            }
+
         }
         .labelStyle(.selectionControl(placement: placement))
-        .buttonRepresentable {
-            configuration.isOn.toggle()
-        }
     }
 }
 

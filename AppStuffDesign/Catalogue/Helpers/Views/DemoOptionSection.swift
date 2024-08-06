@@ -9,6 +9,11 @@ import SwiftUI
 
 protocol SectionViewModel: Hashable, RawRepresentable, CaseIterable { }
 
+protocol OptionSectionViewModel: Hashable, RawRepresentable, CaseIterable {
+    associatedtype Value: Equatable
+    var value: Value { get }
+}
+
 struct DemoOptionSection<T: SectionViewModel>: View {
     @Binding private var selectedItem: T
 
