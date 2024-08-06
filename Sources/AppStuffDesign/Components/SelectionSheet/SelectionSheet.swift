@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol SelectionProtocol: CaseIterable, Identifiable, CustomStringConvertible, Equatable { }
+public protocol SelectionProtocol: CaseIterable, Identifiable, CustomStringConvertible, Equatable { }
 
 public struct SelectionSheet<Options: SelectionProtocol, T: Equatable>: View {
     @Environment(\.dismiss) var dismiss

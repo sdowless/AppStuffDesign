@@ -8,7 +8,7 @@
 import Foundation
 
 public struct SnackbarAction: Identifiable {
-    let id: UUID = .init()
+    public let id: UUID = .init()
     
     var title: String
     var handler: () -> Void
@@ -20,7 +20,7 @@ public struct SnackbarAction: Identifiable {
 }
 
 extension SnackbarAction: Equatable {
-    static func == (lhs: SnackbarAction, rhs: SnackbarAction) -> Bool {
+    public static func == (lhs: SnackbarAction, rhs: SnackbarAction) -> Bool {
         return lhs.id == rhs.id && lhs.title == rhs.title
     }
 }
