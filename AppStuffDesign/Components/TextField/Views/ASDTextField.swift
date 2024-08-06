@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ASDTextField: View {
+    @Binding private var accessoryActionInProgress: Bool
     @Binding private var error: Error?
     @Binding private var text: String
-    
+
+    private var accessoryButtonAction: (() -> Void)?
+    private var accessoryButtonTitle: String?
     private var autocapitlization: TextInputAutocapitalization = .sentences
     private var autocorrectionDisabled: Bool = false
     private var axis: Axis = .horizontal
@@ -27,6 +30,7 @@ struct ASDTextField: View {
         self._text = text
         self.axis = axis
         
+        self._accessoryActionInProgress = .constant(false)
         self._error = .constant(nil)
     }
         
@@ -34,6 +38,7 @@ struct ASDTextField: View {
         VStack {
             ZStack(alignment: .trailing) {
                 TextField(titleKey, text: $text, axis: axis)
+                    .padding(.trailing, trailingPadding)
                     .font(.subheadline)
                     .padding(12)
                     .padding(.leading, clipShape == .capsule ? 4 : 0)
@@ -54,7 +59,7 @@ struct ASDTextField: View {
                         .padding(.horizontal, 16)
                 }
                 
-                if error != nil {
+                if error != nil && !hasAccessoryButton {
                     Button {
                         text = ""
                         error = nil
@@ -65,6 +70,15 @@ struct ASDTextField: View {
                             .foregroundColor(Color(.systemRed))
                             .padding(.trailing, 16)
                     }
+                }
+                
+                if hasAccessoryButton, let accessoryButtonTitle, let accessoryButtonAction {
+                    ASDButton(accessoryButtonTitle, action: accessoryButtonAction)
+                        .buttonStyle(
+                            .standard(rank: .tertiary, size: .medium),
+                            isLoading: $accessoryActionInProgress
+                        )
+                        .padding(.horizontal, 12)
                 }
             }
             
@@ -80,6 +94,14 @@ struct ASDTextField: View {
 }
 
 extension ASDTextField {
+    func accessoryAction(_ title: String, isLoading: Binding<Bool>? = nil, action: @escaping () -> Void) -> Self {
+        var copy = self
+        copy.accessoryButtonTitle = title
+        copy.accessoryButtonAction = action
+        copy._accessoryActionInProgress = isLoading ?? .constant(false)
+        return copy
+    }
+        
     func autocorrectionDisabled(_ disabled: Bool) -> Self {
         var copy = self
         copy.autocorrectionDisabled = disabled
@@ -105,8 +127,10 @@ extension ASDTextField {
     }
     
     func loadable(_ isLoading: Binding<Bool>) -> Self {
+        if hasAccessoryButton { return self }
+
         var copy = self
-        copy.isLoading = isLoading.wrappedValue && error == nil 
+        copy.isLoading = isLoading.wrappedValue && error == nil
         return copy
     }
     
@@ -156,6 +180,14 @@ private extension ASDTextField {
             return 10
         }
     }
+    
+    var hasAccessoryButton: Bool {
+        accessoryButtonTitle != nil && accessoryButtonAction != nil
+    }
+    
+    var trailingPadding: CGFloat {
+        return hasAccessoryButton || error != nil || isLoading ? 32 : 4
+    }
 }
 
 #Preview {
@@ -167,6 +199,10 @@ private extension ASDTextField {
         
         ASDTextField("Type your comment..", text: .constant(""))
             .clipShape(.capsule)
+        
+        ASDTextField("Type your comment..", text: .constant(""))
+            .clipShape(.capsule)
+            .accessoryAction("Send", action: {})
         
         ASDTextField("Type your comment..", text: .constant(""))
             .textFieldStyle(.bordered)

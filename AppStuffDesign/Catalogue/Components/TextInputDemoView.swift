@@ -14,7 +14,7 @@ struct TextInputDemoView: View {
     @State private var isLoading = false
     @State private var showError = false
     @State private var style: TextInputStyle = .filled
-    @State private var text = "This is the input text for this demo view"
+    @State private var text = "This is the input text for this demo view."
 
     var body: some View {
         VStack {
@@ -22,8 +22,11 @@ struct TextInputDemoView: View {
                 ASDTextField("Placeholder..", text: $text, axis: axis.value)
                     .clipShape(clipShape.value)
                     .textFieldStyle(style.value)
-                    .loadable($isLoading)
                     .error(error: $error)
+                    .accessoryAction("Send", isLoading: $isLoading) {
+                        isLoading.toggle()
+                    }
+                    .loadable($isLoading)
             }
             .frame(height: 140)
             
