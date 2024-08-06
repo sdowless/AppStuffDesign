@@ -15,19 +15,22 @@ struct TextInputDemoView: View {
     @State private var showError = false
     @State private var style: TextInputStyle = .filled
     @State private var text = "This is the input text for this demo view."
-
+    @State private var hasAccessoryAction = false
+    @State private var accessoryActionInProgress = false
+    
     var body: some View {
         VStack {
             VStack {
-                ASDTextField("Placeholder..", text: $text, axis: axis.value)
-                    .clipShape(clipShape.value)
-                    .textFieldStyle(style.value)
-                    .error(error: $error)
-                    .accessoryAction("Send", isLoading: $isLoading) {
-                        isLoading.toggle()
-                    }
-                    .loadable($isLoading)
-                    .padding()
+                if hasAccessoryAction {
+                    textField
+                        .accessoryAction("Send", isLoading: $accessoryActionInProgress) {
+                            accessoryAction()
+                        }
+                        .padding()
+                } else {
+                    textField
+                        .padding()
+                }
             }
             .frame(height: 140)
             
@@ -36,9 +39,16 @@ struct TextInputDemoView: View {
                     TextField("Text input..", text: $text, axis: .vertical)
                 }
                 
-                Section("Loader") {
-                    Toggle("Show Loader", isOn: $isLoading)
+                Section("Accessory Action") {
+                    Toggle("Enabled", isOn: $hasAccessoryAction)
                         .tint(.blue)
+                }
+                
+                if !hasAccessoryAction {
+                    Section("Loader") {
+                        Toggle("Show Loader", isOn: $isLoading)
+                            .tint(.blue)
+                    }
                 }
                 
                 Section("Error Handling") {
@@ -62,6 +72,16 @@ struct TextInputDemoView: View {
             }
             
             error = newValue ? TextInputError.loginFailed : nil
+        }
+    }
+}
+
+private extension TextInputDemoView {
+    func accessoryAction() {
+        Task {
+            accessoryActionInProgress = true
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            accessoryActionInProgress = false
         }
     }
 }
@@ -115,6 +135,14 @@ private extension TextInputDemoView {
                 return .bordered
             }
         }
+    }
+    
+    var textField: ASDTextField {
+        ASDTextField("Placeholder..", text: $text, axis: axis.value)
+            .clipShape(clipShape.value)
+            .textFieldStyle(style.value)
+            .error(error: $error)
+            .loadable($isLoading)
     }
 }
 #Preview {
