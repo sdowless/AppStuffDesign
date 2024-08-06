@@ -26,6 +26,7 @@ https://github.com/user-attachments/assets/6581904d-64a4-40c9-8a32-427ccd562a4b
 ## Design Catalogue
 
 The Design Catalogue feature provides an intuitive and interactive way to explore the full range of components within the library.
+
 Users can browse through all available elements, interact with them in real-time, and see firsthand how each component can be utilized. 
 
 
