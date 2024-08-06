@@ -15,7 +15,7 @@ public struct DotIndicator: View {
     private var title: String? = nil
     private var labelColor: Color? = .primary
     
-    init(_ title: String) {
+    public init(_ title: String) {
         self.title = title
     }
     

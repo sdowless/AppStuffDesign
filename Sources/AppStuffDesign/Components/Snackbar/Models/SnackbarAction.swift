@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct SnackbarAction: Identifiable {
+public struct SnackbarAction: Identifiable {
     let id: UUID = .init()
     
     var title: String
     var handler: () -> Void
     
-    init(title: String, handler: @escaping () -> Void) {
+    public init(title: String, handler: @escaping () -> Void) {
         self.title = title
         self.handler = handler
     }

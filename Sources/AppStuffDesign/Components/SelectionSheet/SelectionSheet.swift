@@ -9,7 +9,7 @@ import SwiftUI
 
 protocol SelectionProtocol: CaseIterable, Identifiable, CustomStringConvertible, Equatable { }
 
-struct SelectionSheet<Options: SelectionProtocol, T: Equatable>: View {
+public struct SelectionSheet<Options: SelectionProtocol, T: Equatable>: View {
     @Environment(\.dismiss) var dismiss
     
     let title: String
@@ -17,14 +17,14 @@ struct SelectionSheet<Options: SelectionProtocol, T: Equatable>: View {
     
     @Binding var selection: T?
     
-    init(_ title: String, options: [Options], selection: Binding<T?>) {
+    public init(_ title: String, options: [Options], selection: Binding<T?>) {
         _selection = selection
         
         self.title = title
         self.options = options
     }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             Text(title)
                 .font(.headline)

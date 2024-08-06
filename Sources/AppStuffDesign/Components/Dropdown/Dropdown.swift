@@ -15,7 +15,7 @@ public struct Dropdown<Selection: CustomStringConvertible>: View {
     private var errorMessage: String? = nil
     private var showError = false
         
-    init(_ title: String?, selection: Binding<Selection?>) {
+    public init(_ title: String?, selection: Binding<Selection?>) {
         _selection = selection
         
         self.title = title

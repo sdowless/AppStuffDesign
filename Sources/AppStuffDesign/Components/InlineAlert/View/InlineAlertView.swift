@@ -22,7 +22,7 @@ public struct InlineAlertView: View {
     private var systemImage: String?
     private var variant: InlineAlertVariant = .status(.default)
     
-    init(_ title: String? = nil, message: String, systemImage: String? = nil) {
+    public init(_ title: String? = nil, message: String, systemImage: String? = nil) {
         _isPresented = .constant(true)
         
         self.title = title
@@ -30,7 +30,7 @@ public struct InlineAlertView: View {
         self.systemImage = systemImage
     }
     
-    init(
+    public init(
         _ title: String? = nil,
         message: String,
         systemImage: String? = nil,

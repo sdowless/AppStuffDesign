@@ -14,7 +14,7 @@ public struct InlineInfoItemView: View {
     
     private var iconAlignment: VerticalAlignment = .top
     
-    init(title: String? = nil, subtitle: String, imageName: String) {
+    public init(title: String? = nil, subtitle: String, imageName: String) {
         self.title = title
         self.subtitle = subtitle
         self.imageName = imageName

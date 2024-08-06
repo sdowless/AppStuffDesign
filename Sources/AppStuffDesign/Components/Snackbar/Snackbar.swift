@@ -15,7 +15,7 @@ public struct Snackbar: View {
     private let message: String
     private let systemImage: String?
     
-    init(
+    public init(
         message: String,
         systemImage: String? = nil,
         duration: SnackbarDuration = .d1,

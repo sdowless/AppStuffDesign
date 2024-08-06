@@ -28,7 +28,7 @@ public struct SlideToActButton: View {
     private var title: String
     private var action: () -> Void
     
-    init(_ title: String, isLoading: Binding<Bool>, action: @escaping () -> Void) {
+    public init(_ title: String, isLoading: Binding<Bool>, action: @escaping () -> Void) {
         _isLoading = isLoading
         self.title = title
         self.action = action

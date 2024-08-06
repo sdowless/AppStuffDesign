@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SnackbarModifier: ViewModifier {
+public struct SnackbarModifier: ViewModifier {
     @Binding var show: Bool
         
     private let message: String
@@ -16,7 +16,7 @@ struct SnackbarModifier: ViewModifier {
     private let duration: SnackbarDuration
     private let action: SnackbarAction?
     
-    init(
+    public init(
         message: String,
         systemImage: String? = nil,
         duration: SnackbarDuration = .d1,
@@ -33,7 +33,7 @@ struct SnackbarModifier: ViewModifier {
         self.action = accessoryAction
     }
     
-    func body(content: Content) -> some View {
+    public func body(content: Content) -> some View {
         ZStack {
             content
 

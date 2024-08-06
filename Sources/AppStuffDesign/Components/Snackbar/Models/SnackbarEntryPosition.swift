@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SnackbarEntryPosition {
+public enum SnackbarEntryPosition {
     /// Snackbar entry from the bottom of the screen
     case bottom
     

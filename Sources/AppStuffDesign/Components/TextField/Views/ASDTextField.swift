@@ -25,7 +25,7 @@ public struct ASDTextField: View {
     private var textFieldStyle: ASDTextFieldStyle = .backgroundFill
     private let titleKey: String
 
-    init(_ titleKey: String, text: Binding<String>, axis: Axis = .horizontal) {
+    public init(_ titleKey: String, text: Binding<String>, axis: Axis = .horizontal) {
         self.titleKey = titleKey
         self._text = text
         self.axis = axis
@@ -44,7 +44,6 @@ public struct ASDTextField: View {
                     .padding(.leading, clipShape == .capsule ? 4 : 0)
                     .background(backgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-//                    .frame(width: 360)
                     .textInputAutocapitalization(autocapitlization)
                     .autocorrectionDisabled(autocorrectionDisabled)
                     .keyboardType(keyboardType)
