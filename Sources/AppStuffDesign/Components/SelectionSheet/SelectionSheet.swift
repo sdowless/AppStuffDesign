@@ -48,7 +48,6 @@ public struct SelectionSheet<T: SelectionProtocol>: View {
             
             Spacer()
         }
-        .presentationDetents([.medium])
         .onChange(of: selection) { oldValue, newValue in
             if newValue != nil {
                 dismiss()
