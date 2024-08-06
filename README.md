@@ -11,7 +11,7 @@ Add this Swift package in Xcode using its Github repository url. (File > Swift P
 import AppStuffDesign
 
 VStack {
-   ASDButton("Click Me) {
+   ASDButton("Click Me") {
       // action handler..
    }
    .buttonStyle(.standard(), isLoading: $isLoading)
