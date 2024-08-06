@@ -44,7 +44,7 @@ struct ASDTextField: View {
                     .padding(.leading, clipShape == .capsule ? 4 : 0)
                     .background(backgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
-                    .frame(width: 360)
+//                    .frame(width: 360)
                     .textInputAutocapitalization(autocapitlization)
                     .autocorrectionDisabled(autocorrectionDisabled)
                     .keyboardType(keyboardType)
@@ -207,4 +207,5 @@ private extension ASDTextField {
         ASDTextField("Type your comment..", text: .constant(""))
             .textFieldStyle(.bordered)
     }
+    .padding()
 }

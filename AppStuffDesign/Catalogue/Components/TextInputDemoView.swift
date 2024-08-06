@@ -27,6 +27,7 @@ struct TextInputDemoView: View {
                         isLoading.toggle()
                     }
                     .loadable($isLoading)
+                    .padding()
             }
             .frame(height: 140)
             
