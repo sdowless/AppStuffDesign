@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SnackbarDuration: TimeInterval {
+enum SnackbarDuration: TimeInterval, CaseIterable {
     /// A duration value of 4 seconds
     case d1 = 4
     

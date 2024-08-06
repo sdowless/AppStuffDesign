@@ -35,6 +35,8 @@ struct RadioButtonDemoView: View {
                 )
             }
         }
+        .navigationTitle("Radio Button")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

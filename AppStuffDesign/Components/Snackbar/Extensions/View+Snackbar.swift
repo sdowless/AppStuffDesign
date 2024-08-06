@@ -11,9 +11,19 @@ extension View {
     func snackbar(
         message: String,
         systemImage: String? = nil,
+        duration: SnackbarDuration = .d1,
         entryPosition: SnackbarEntryPosition = .bottom,
-        show: Binding<Bool>
+        show: Binding<Bool>,
+        accessoryAction: SnackbarAction? = nil 
     ) -> some View {
-        modifier(SnackbarModifier(message: message, systemImage: systemImage, entryPosition: entryPosition, show: show))
+        modifier(
+            SnackbarModifier(
+                message: message,
+                systemImage: systemImage,
+                duration: duration,
+                entryPosition: entryPosition,
+                show: show
+            )
+        )
     }
 }

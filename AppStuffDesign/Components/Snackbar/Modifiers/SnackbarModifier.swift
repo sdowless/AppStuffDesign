@@ -13,18 +13,24 @@ struct SnackbarModifier: ViewModifier {
     private let message: String
     private let entryPosition: SnackbarEntryPosition
     private let systemImage: String?
+    private let duration: SnackbarDuration
+    private let action: SnackbarAction?
     
     init(
         message: String,
         systemImage: String? = nil,
+        duration: SnackbarDuration = .d1,
         entryPosition: SnackbarEntryPosition = .bottom,
-        show: Binding<Bool>
+        show: Binding<Bool>,
+        accessoryAction: SnackbarAction? = nil
     ) {
         _show = show
         
         self.message = message
         self.systemImage = systemImage
+        self.duration = duration
         self.entryPosition = entryPosition
+        self.action = accessoryAction
     }
     
     func body(content: Content) -> some View {
@@ -36,11 +42,10 @@ struct SnackbarModifier: ViewModifier {
                     switch entryPosition {
                     case .bottom:
                         Spacer()
-                        Snackbar(message: message, systemImage: systemImage, isPresented: $show)
+                        snackbar
                     case .top:
-                        Snackbar(message: message, systemImage: systemImage, isPresented: $show)
+                        snackbar
                         Spacer()
-
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -52,6 +57,17 @@ struct SnackbarModifier: ViewModifier {
 }
 
 private extension SnackbarModifier {
+    var snackbar: some View {
+        Snackbar(
+            message: message,
+            systemImage: systemImage,
+            duration: duration,
+            isPresented: $show,
+            accessoryAction: action
+        )
+    }
+    
+    
     var transitionEdge: Edge {
         switch entryPosition {
         case .bottom:
