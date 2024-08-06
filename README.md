@@ -27,8 +27,9 @@ https://github.com/user-attachments/assets/6581904d-64a4-40c9-8a32-427ccd562a4b
 
 The Design Catalogue feature provides an intuitive and interactive way to explore the full range of components within the library.
 Users can browse through all available elements, interact with them in real-time, and see firsthand how each component can be utilized. 
-This makes it easier to understand the versatility and application of the components in various design scenarios.
 
+
+Go to `AppStuffDesign -> Sources -> Catalogue -> DesignCatalogue` and load the preview in Xcode Canvas. 
 
 https://github.com/user-attachments/assets/698507b8-26f0-4ae4-921c-5e8df6959184
 
