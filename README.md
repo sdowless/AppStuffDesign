@@ -5,6 +5,17 @@
 ## Installation
 Add this Swift package in Xcode using its Github repository url. (File > Swift Packages > Add Package Dependency...)
 
-## Components 
+## Usage 
 
-Coming soon..
+```swift
+import AppStuffDesign
+
+VStack {
+   AvatarView(someImageUrl, size: .medium)
+     .clipShape(.circle)
+}
+```
+
+## Design Catalogue
+
+Comes with a full design catalogue with live previews and component interaction
