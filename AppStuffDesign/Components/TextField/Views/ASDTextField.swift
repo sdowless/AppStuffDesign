@@ -36,6 +36,7 @@ struct ASDTextField: View {
                 TextField(titleKey, text: $text, axis: axis)
                     .font(.subheadline)
                     .padding(12)
+                    .padding(.leading, clipShape == .capsule ? 4 : 0)
                     .background(backgroundColor)
                     .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
                     .frame(width: 360)
@@ -43,10 +44,14 @@ struct ASDTextField: View {
                     .autocorrectionDisabled(autocorrectionDisabled)
                     .keyboardType(keyboardType)
                     .submitLabel(submitLabel)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .strokeBorder(borderColor, style: .init(lineWidth: 1))
+                    }
                 
-                if isLoading {
+                if isLoading && error == nil {
                     ProgressView()
-                        .padding(.trailing, 16)
+                        .padding(.horizontal, 16)
                 }
                 
                 if error != nil {
@@ -134,6 +139,15 @@ private extension ASDTextField {
         }
     }
     
+    var borderColor: Color {
+        switch textFieldStyle {
+        case .backgroundFill:
+            return .clear
+        case .bordered:
+            return Color(.systemGray3)
+        }
+    }
+    
     var cornerRadius: CGFloat {
         switch clipShape {
         case .capsule:
@@ -153,5 +167,8 @@ private extension ASDTextField {
         
         ASDTextField("Type your comment..", text: .constant(""))
             .clipShape(.capsule)
+        
+        ASDTextField("Type your comment..", text: .constant(""))
+            .textFieldStyle(.bordered)
     }
 }

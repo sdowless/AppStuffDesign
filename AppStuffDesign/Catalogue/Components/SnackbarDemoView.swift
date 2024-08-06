@@ -43,6 +43,8 @@ struct SnackbarDemoView: View {
                 DemoOptionSection("Entry Point", options: SnackbarEntry.allCases, selectedItem: $entry)
             }
         }
+        .navigationTitle("Snackbar")
+        .navigationBarTitleDisplayMode(.inline)
         .snackbar(
             message: message,
             systemImage: "wifi.slash",
