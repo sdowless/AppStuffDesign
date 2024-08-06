@@ -1,6 +1,6 @@
-# AppStuff Design
+## AppStuff Design
 
-### Design Library of reusable, modern SwiftUI components
+Design library of modern and reusable custom SwiftUI components
 
 ## Installation
 Add this Swift package in Xcode using its Github repository url. (File > Swift Packages > Add Package Dependency...)
