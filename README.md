@@ -19,4 +19,7 @@ VStack {
 ## Design Catalogue
 
 Comes with a full design catalogue with live previews and component interaction
-![Screenshot 2024-08-06 at 3 41 41 PM](https://github.com/user-attachments/assets/aa22c0b7-6ec7-4166-8146-8de71aba42be)
+
+
+https://github.com/user-attachments/assets/698507b8-26f0-4ae4-921c-5e8df6959184
+
