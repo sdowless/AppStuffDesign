@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StandardButtonStyle: ButtonStyle {
+public struct StandardButtonStyle: ButtonStyle {
     @Environment(\.isLoading) var isLoading
     
     private var rank: ASDButtonRank
@@ -22,7 +22,7 @@ struct StandardButtonStyle: ButtonStyle {
         self.iconLayout = iconLayout
     }
     
-    func makeBody(configuration: Self.Configuration) -> some View {
+    public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .labelStyle(
                 .standardButton(
@@ -37,7 +37,7 @@ struct StandardButtonStyle: ButtonStyle {
     }
 }
 
-extension ButtonStyle where Self == StandardButtonStyle {
+public extension ButtonStyle where Self == StandardButtonStyle {
     static func standard() -> Self {
         .init(rank: .primary, variant: .default)
     }

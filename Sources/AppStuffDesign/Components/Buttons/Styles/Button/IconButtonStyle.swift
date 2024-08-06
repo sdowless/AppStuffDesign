@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IconButtonStyle: ButtonStyle {
+public struct IconButtonStyle: ButtonStyle {
     @Environment(\.isLoading) var isLoading
     
     private var rank: ASDButtonRank
@@ -20,7 +20,7 @@ struct IconButtonStyle: ButtonStyle {
         self.variant = variant
     }
     
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .labelStyle(
                 .iconButton(
@@ -34,7 +34,7 @@ struct IconButtonStyle: ButtonStyle {
     }
 }
 
-extension ButtonStyle where Self == IconButtonStyle {
+public extension ButtonStyle where Self == IconButtonStyle {
     static var icon: Self {
         .init()
     }
