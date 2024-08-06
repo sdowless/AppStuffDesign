@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-public protocol SelectionProtocol: CaseIterable, Identifiable, CustomStringConvertible, Equatable { }
+public protocol SelectionProtocol: CustomStringConvertible, Hashable { }
 
-public struct SelectionSheet<Options: SelectionProtocol, T: Equatable>: View {
+public struct SelectionSheet<T: SelectionProtocol>: View {
     @Environment(\.dismiss) var dismiss
     
     let title: String
-    let options: [Options]
+    let options: [T]
     
     @Binding var selection: T?
     
-    public init(_ title: String, options: [Options], selection: Binding<T?>) {
+    public init(_ title: String, options: [T], selection: Binding<T?>) {
         _selection = selection
         
         self.title = title
@@ -30,11 +30,11 @@ public struct SelectionSheet<Options: SelectionProtocol, T: Equatable>: View {
                 .font(.headline)
                 .padding()
             
-            ForEach(options) { option in
+            ForEach(options, id: \.self) { option in
                 VStack {
                     RadioButton(
                         option.description,
-                        item: option as? T,
+                        item: option,
                         selectedItem: $selection
                     )
                     .selectionControlPlacement(.trailing)

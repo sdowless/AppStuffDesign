@@ -59,7 +59,7 @@ private extension DropdownDemoView {
     }
 }
 
-enum PaymentOptions: SelectionProtocol {
+enum PaymentOptions: SelectionProtocol, CaseIterable {
     case biWeekly
     case semiMonthly
     case monthly
@@ -81,7 +81,7 @@ enum PaymentOptions: SelectionProtocol {
     var id: Int { return self.hashValue }
 }
 
-enum LoanType: SelectionProtocol {
+enum LoanType: SelectionProtocol, CaseIterable {
     case auto
     case home
     case personal
