@@ -70,6 +70,7 @@ struct StandardButtonLabelStyle: LabelStyle {
         .foregroundStyle(foregroundColor)
         .background(backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 6))
+        .disabled(isLoading.wrappedValue)
         .overlay {
             if rank == .secondary {
                 RoundedRectangle(cornerRadius: 6)
