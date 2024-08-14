@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension View {
+public extension View {
     func snackbar(
         message: String,
         systemImage: String? = nil,

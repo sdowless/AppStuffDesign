@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SnackbarAction: Identifiable {
+public struct SnackbarAction: Identifiable {
     let id: UUID = .init()
     
     var title: String
