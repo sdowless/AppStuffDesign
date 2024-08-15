@@ -8,6 +8,7 @@
 import SwiftUI
 
 private struct ButtonTransformer: ViewModifier {
+    @Environment(\.isLoading) var isLoading
     var enabled: Bool
     var action: () -> Void
     
@@ -15,7 +16,7 @@ private struct ButtonTransformer: ViewModifier {
         Button(action: action) {
             content
         }
-        .disabled(!enabled)
+        .disabled(!enabled || isLoading.wrappedValue)
         .opacity(enabled ? 1.0 : 0.5)
     }
 }
